@@ -1,15 +1,26 @@
 package main;
 
 import java.io.*;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.*;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         HashMap<String, Integer> mapOfWords = new HashMap<>();
         ArrayList<String> list = new ArrayList<>();
-        fileToList(list);
+        try {
+            fileToList(list);
+        }
+        catch (NoSuchFileException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         printList(list);
         System.out.println("------------------------------");
         Collections.sort(list);
@@ -46,7 +57,7 @@ public class Main {
         }
     }
 
-    public static void fileToList(ArrayList<String> list) throws IOException {
+    public static void fileToList(ArrayList<String> list) throws NoSuchFileException, IOException {
         String str = "";
         Scanner scanner = new Scanner(Paths.get(getPath()));
         scanner.useDelimiter("\\s|\\..|,.|\\n|\\.|-.|\\(|:|\\)|\\*|\\t|$|\\r|@|№|\\d");
