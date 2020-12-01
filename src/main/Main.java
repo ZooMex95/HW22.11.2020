@@ -20,7 +20,6 @@ public class Main {
             e.printStackTrace();
         }
 
-
         printList(list);
         System.out.println("------------------------------");
         Collections.sort(list);
@@ -59,18 +58,18 @@ public class Main {
 
     public static void fileToList(ArrayList<String> list) throws NoSuchFileException, IOException {
         String str = "";
-        Scanner scanner = new Scanner(Paths.get(getPath()));
-        scanner.useDelimiter("\\s|\\..|,.|\\n|\\.|-.|\\(|:|\\)|\\*|\\t|$|\\r|@|№|\\d");
+        Scanner scanner = new Scanner(Paths.get("File.txt")); //getPath()
+        scanner.useDelimiter("[^A-za-zА-Яа-я]+");
         while(scanner.hasNext()){
             str = scanner.next();
             if(!str.equals("")) {
                 list.add(str.toLowerCase());
             }
         }
-        for (String s:list
+/*        for (String s:list
         ) {
             System.out.println(s);
-        }
+        }*/
 
         scanner.close();
     }
