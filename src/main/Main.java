@@ -64,7 +64,7 @@ public class Main {
         while(scanner.hasNext()){
             str = scanner.next();
             if(!str.equals("")) {
-                list.add(str);
+                list.add(str.toLowerCase());
             }
         }
         for (String s:list
